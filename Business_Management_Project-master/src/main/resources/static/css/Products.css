@@ -1,0 +1,51 @@
+body {
+    background-color: rgb(192, 192, 192);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../Images/image.png'); /* Chemin de l'image */
+    background-size: cover; /* Ajuste l'image pour couvrir tout l'écran */
+    background-repeat: no-repeat; /* Évite la répétition de l'image */
+    background-attachment: fixed; /* L'image reste fixe lors du défilement */
+    background-position: center; /* Centre l'image */
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à une nouvelle ligne */
+    justify-content: space-between; /* Espace uniforme entre les éléments */
+    gap: 20px; /* Espace entre les produits */
+    padding: 20px;
+}
+
+.product {
+    box-shadow: 5px 5px 8px black;
+    background-color: white;
+    padding: 15px;
+    width: calc(30% - 20px); /* 3 produits par ligne */
+    box-sizing: border-box; /* Inclut padding et bordure dans la largeur */
+    text-align: center;
+}
+
+img {
+    width: 250px; /* Largeur fixe */
+    height: 250px; /* Hauteur fixe */
+    object-fit: cover; /* Ajuste l'image pour remplir le conteneur tout en conservant les proportions */
+    border-radius: 10px; /* Optionnel : coins arrondis */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optionnel : ombre pour le style */
+}
+
+.buy-button {
+    color: white;
+    background-color: rgb(230, 6, 163);
+    border: 1px solid rgb(238, 7, 242);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.buy-button:hover {
+    background-color: rgb(128, 0, 111);
+    cursor: pointer;
+}

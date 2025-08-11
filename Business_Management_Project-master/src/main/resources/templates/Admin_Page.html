@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="" th:href="@{/css/Admin_page.css}" />
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a class="back" href="/login"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            <h1>Admin_Page</h1>
+            <div class="header-actions">
+                
+                <a href="/login" class="logout-link"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+
+        <!-- Products Section -->
+        <section class="card">
+            <h2>Products</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product :${products}">
+                        <td th:text="${product.pid}"></td>
+                        <td th:text="${product.pname}"></td>
+                        <td th:text="${product.pprice}"></td>
+                        <td><img th:src="@{'../Images/'+${product.image}}" alt="Product Image" width="100" /></td>
+                        <td>
+                            <a href="" th:href="@{'/updateProduct/'+${product.pid}}" class="action edit"><i class="fa-solid fa-pen"></i></a>
+                            <a href="" th:href="@{'/deleteProduct/'+${product.pid}}" class="action delete"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="" class="btn" th:href="@{/addProduct}">Add Product</a>
+        </section>
+
+        <!-- Orders Section -->
+
+    </main>
+</body>
+
+</html>

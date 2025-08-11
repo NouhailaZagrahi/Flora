@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>FLORA : PRODUCTS</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" href="" th:href="@{css/Products.css}" />
+	
+</head>
+
+<body>
+    <nav th:replace="~{Navigation::navbar()}"></nav>
+    <section class="products-container">
+        <div class="product" th:each="s : ${products}">
+            <!-- Image du produit -->
+            <img th:src="@{'../Images/'+${s.image}}" alt="Product Image" />
+            <!-- Nom du produit -->
+            <h4 style="color: black;"><strong><span th:text="${s.pname}"></span></strong></h4>
+            <!-- Petite image supplémentaire -->
+            <!-- Prix du produit -->
+            <h4><span th:text="${s.pprice} + ' DH '"></span></h4>
+            <!-- Lien pour acheter -->
+        </div>
+    </section>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sélectionner tous les boutons "Order Now"
+            const buyButtons = document.querySelectorAll(".buy-button");
+
+            buyButtons.forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault(); // Empêche la redirection immédiate
+
+                    // Créer dynamiquement la boîte de dialogue
+                    const customAlert = document.createElement("div");
+                    customAlert.style.position = "fixed";
+                    customAlert.style.top = "0";
+                    customAlert.style.left = "0";
+                    customAlert.style.width = "100%";
+                    customAlert.style.height = "100%";
+                    customAlert.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                    customAlert.style.display = "flex";
+                    customAlert.style.justifyContent = "center";
+                    customAlert.style.alignItems = "center";
+                    customAlert.style.zIndex = "1000";
+
+                    const alertContent = document.createElement("div");
+                    alertContent.style.backgroundColor = "white";
+                    alertContent.style.padding = "20px 30px";
+                    alertContent.style.borderRadius = "10px";
+                    alertContent.style.textAlign = "center";
+                    alertContent.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+                    alertContent.style.maxWidth = "400px";
+                    alertContent.style.width = "90%";
+                    alertContent.style.position = "relative";
+
+                    const alertText = document.createElement("p");
+                    alertText.textContent =
+                        "Please login or register (if you don't have an account), so we can contact you later for confirmation!";
+                    alertText.style.fontSize = "18px";
+                    alertText.style.fontWeight = "bold";
+                    alertText.style.marginBottom = "20px";
+
+                    const okButton = document.createElement("button");
+                    okButton.textContent = "OK";
+                    okButton.style.backgroundColor = "pink";
+                    okButton.style.color = "white";
+                    okButton.style.border = "none";
+                    okButton.style.padding = "10px 20px";
+                    okButton.style.fontSize = "16px";
+                    okButton.style.borderRadius = "5px";
+                    okButton.style.cursor = "pointer";
+
+                    // Ajouter un bouton "X" pour fermer
+                    const closeButton = document.createElement("span");
+                    closeButton.textContent = "X";
+                    closeButton.style.position = "absolute";
+                    closeButton.style.top = "10px";
+                    closeButton.style.right = "10px";
+                    closeButton.style.cursor = "pointer";
+                    closeButton.style.fontSize = "18px";
+                    closeButton.style.fontWeight = "bold";
+                    closeButton.style.color = "black";
+
+                    // Ajouter le contenu à la boîte de dialogue
+                    alertContent.appendChild(closeButton);
+                    alertContent.appendChild(alertText);
+                    alertContent.appendChild(okButton);
+                    customAlert.appendChild(alertContent);
+                    document.body.appendChild(customAlert);
+
+                    // Gérer le clic sur "OK"
+                    okButton.addEventListener("click", function () {
+                        document.body.removeChild(customAlert); // Supprime la boîte de dialogue
+                        window.location.href = "/login"; // Redirige vers la page de connexion
+                    });
+
+                    // Gérer le clic sur "X" pour fermer la boîte
+                    closeButton.addEventListener("click", function () {
+                        document.body.removeChild(customAlert); // Supprime la boîte de dialogue
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

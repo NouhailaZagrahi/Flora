@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Flora</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" href="css/Home.css" />
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}"></nav>
+	<div class="text">
+	<h3 style="color: white;"><h1>Découvrez notre sélection de fleurs fraîches et élégantes !</h1>
+
+		Nous vous offrons une variété de fleurs soigneusement sélectionnées pour toutes les occasions. Que ce soit pour un mariage, un anniversaire, ou simplement pour ajouter une touche de couleur à votre maison, nos bouquets et compositions florales sont créés avec passion et soin.
+		
+		Nous nous engageons à vous fournir des produits de qualité, livrés directement à votre porte, pour que chaque moment soit sublimé par la beauté de la nature. Explorez notre boutique en ligne et trouvez le bouquet qui illuminera vos journées !</h3>
+	</div>
+	<div class="background">
+		<video src="/Videos/vid.mp4" loop autoplay muted style="height: 30%; width: 99.99%;"></video>
+	</div>
+</body>
+
+</html>

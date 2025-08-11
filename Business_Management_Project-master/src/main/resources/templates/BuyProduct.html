@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Buy Product </title>
+	<link rel="stylesheet" href="" />
+</head>
+<style>
+body {
+    background-image: url('/Images/flower2.jpeg'); /* Chemin relatif correct */
+    background-size: cover; /* Couvre toute la page */
+    background-repeat: no-repeat; /* Pas de répétition */
+    background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+    background-position: center; /* Centre l'image */
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+    * {
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    .searchInput {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .searchInput input {
+        padding: 12px;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .searchInput button {
+        padding: 12px;
+        width: 120px;
+        background-color: #ffccd5; /* Rose bébé */
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .searchInput button:hover {
+        background-color: #ff9aa2;
+    }
+
+    .details {
+        margin-top: 50px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+	.details2 {
+        margin-top: 50px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+		margin-bottom: 50px;
+    }
+
+    .details input,
+    .details button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+	.details button{
+		width: 50%;
+	}
+
+    .details button {
+        background-color: #ffccd5; /* Rose bébé */
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .details button:hover {
+        background-color: #ff9aa2;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th {
+        background-color: #ffccd5;
+        color: white;
+        padding: 15px;
+        text-align: left;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #ffe5ec;
+    }
+
+    .welcome marquee {
+        width: 100%;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        color: #ffccd5; /* Rose bébé */
+        margin-top: 10px;
+    }
+
+    a {
+        border: 1px solid #ffccd5;
+        background-color: #ffccd5;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-weight: bold;
+    }
+
+    a:hover {
+        background-color: #ff9aa2;
+    }
+</style>
+
+
+<body>
+	<div class="welcome">
+			<marquee direction="right"  behaviour="slide" 
+			scrollamount="15" loop="1">Welcome Back <span  th:text="${name}"></span>
+			</marquee><br />
+	</div>
+	
+	<a href="/home">Back</a>
+	<center>
+
+		<form action="" th:action="@{/product/search}" method="post" class="searchInput">
+			<h1>Product Search :</h1>
+			<input type="text" name="productName" required placeholder="Please enter the Product Name....">
+			<button type="submit">SEARCH</button><br />
+			<smal style="color: #975a60; font-weight: bold; margin-top: 10px; margin-left: 30px;" th:text="${message}"> </smal>
+		</form>
+		
+		<div th:if="${product!=null}" class="details">
+			<form action="" th:action="@{/product/order}" th:object="${product}" method="post">
+				Product Name :
+				<input type="text" value="" name="oName" th:value="${product.pname}" readonly /><br />
+				Product Price :
+				<input type="text" value="" name="oPrice" th:value="${product.pprice}" readonly /><br />
+				Quantity :
+				<input type="number" placeholder="Minimun: 1 Piece" min="1" name="oQuantity" /><br />
+
+				<button type="submit">Order Now</button>
+			</form>
+		</div>
+		
+		<div th:if="${orders!=null}" class="details2">
+			<h2>Your Orders :</h2>
+			<table >
+				<tr>
+	
+					<th>Product_Name</th>
+					<th>Product_Price</th>
+					<th>Product_Quantity</th>
+					<th>Total_Ammount</th>
+					<th>Date</th>
+				</tr>
+				<tr th:each="order :${orders}">
+					<td th:text="${order.oName}"></td>
+					<td th:text="${order.oPrice}"></td>
+					<td th:text="${order.oQuantity}"></td>
+					<td th:text="${order.totalAmmout}"></td>
+					<td th:text="${order.orderDate}"></td>
+
+				</tr>
+			</table>
+		</div>
+	</center>
+</body>
+
+</html>

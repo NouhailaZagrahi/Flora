@@ -1,0 +1,129 @@
+/* Global Styles */
+body {
+    background: url('https://plus.unsplash.com/premium_photo-1677178629088-ba7d3a23049a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form Card Styling */
+.card {
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Title Styling */
+h3 {
+    font-weight: bold;
+    color: seagreen;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Fields Styling */
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    color: #333;
+    transition: border 0.3s ease-in-out;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #aaa;
+}
+
+input:focus, textarea:focus {
+    border-color: seagreen;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #0f8330;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0c6a28;
+}
+
+/* Style général pour tous les boutons */
+/* Style général pour tous les boutons */
+.btn {
+    display: block;
+    width: 100%; /* Les boutons prennent toute la largeur disponible */
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Bouton Update Product (largeur maximale) */
+.btn-success {
+    background-color: #0f8330;
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #0c6a28;
+}
+
+/* Bouton Back to Services (largeur maximale aussi) */
+.btn-secondary {
+    background-color: transparent;
+    color: seagreen;
+    border: 2px solid seagreen;
+}
+
+.btn-secondary:hover {
+    background-color: seagreen;
+    color: white;
+    border-color: seagreen;
+}
+
+/* Buttons section */
+.d-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input, textarea {
+        font-size: 14px;
+    }
+}

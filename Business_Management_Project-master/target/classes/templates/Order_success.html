@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Order Confirmation</title>
+</head>
+<style>
+	body {
+		background-image: url('/Images/flower2.jpeg'); /* Image de fond */
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		margin: 0;
+		padding: 0;
+		font-family: 'Roboto', sans-serif;
+		display: flex; /* Active Flexbox */
+		justify-content: center; /* Centre horizontalement */
+		align-items: center; /* Centre verticalement */
+		height: 100vh; /* Hauteur de la page entière */
+	}
+
+	.text {
+		text-align: center;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: rgba(255, 255, 255, 0.5); /* Fond transparent */
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		width: 500px;
+		height: 400px;
+		margin-top: 100px;
+		margin-bottom: 100px; /* Espace par rapport au bas de la page */
+	}
+
+	h4 {
+		color: #da6c75; /* Rose bébé */
+		margin-bottom: 10px;
+		font-size: 26px;
+	}
+
+	span {
+		color: #da6c75;
+		font-weight: bold;
+	}
+
+	h3 {
+		color: #333;
+		font-size: 20px;
+		font-family: sans-serif;
+		margin-top: 10px;
+	}
+
+	a {
+		border: 1px solid #ffccd5; /* Rose bébé */
+		text-decoration: none;
+		background-color: #ffccd5; /* Rose bébé */
+		color: #fff;
+		font-family: sans-serif;
+		padding: 10px 15px;
+		border-radius: 5px;
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		font-weight: bold;
+		transition: background-color 0.3s;
+	}
+
+	a:hover {
+		background-color: #ff9aa2; /* Couleur au survol */
+	}
+
+	.img-container img {
+		margin-top: 20px;
+		width: 250px; /* Largeur de l'image */
+		height: auto; /* Conserve les proportions */
+		border-radius: 10px; /* Coins arrondis */
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+</style>
+
+<body>
+	<a href="/product/back">Back</a>
+	<div class="text">
+		<h4>Ordered Successfully... !!!</h4>
+		<h3>Your purchased amount is : <span th:text="${amount}+' DH'"></span></h3>
+		<div class="img-container">
+			<img src="/Images/success.jpg" alt="Success Image" />
+		</div>
+	</div>
+</body>
+
+</html>
